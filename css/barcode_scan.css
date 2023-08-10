@@ -1,0 +1,46 @@
+﻿body {
+}
+
+.scan {
+    position: relative;
+    border: 1px solid;
+    border-color: forestgreen;
+    /*    */
+    width: auto;
+    padding: 10px;
+    overflow: auto; /* 高度自動撐開 */
+}
+
+canvas.drawing, canvas.drawingBuffer {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    /*    */
+    width: 640px;
+    height: 480px;
+    z-index: 1;
+}
+
+.camera {
+    position: relative;
+    float: left;
+    width: 640px;
+    height: 480px;
+/*    border: 1px solid;
+    border-color: blue;*/
+    z-index: 1;
+}
+
+#camera {
+    float: left;
+}
+
+.barcode_txbox_input {
+    
+}
+
+.barcode {
+    width: 500px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}

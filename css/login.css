@@ -1,0 +1,25 @@
+﻿body {
+
+}
+
+.div_login {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    height: auto;
+}
+
+.div_login h1 {
+    text-align: center;
+}
+
+.btn_div {
+    display: flex;
+    justify-content: center;
+}
+
+.btn_div .btn {
+    margin: 2px 2px;
+}
