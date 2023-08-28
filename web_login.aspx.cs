@@ -26,20 +26,26 @@ namespace WebApplication2
             string url = Request.Url.Query.ToString();
             string[] url_query = url.Split(new string[] { "?userID=", "&Password=", "&TickerID="}, StringSplitOptions.RemoveEmptyEntries);
 
-            if (url_query.Length > 1)
+            if (url_query.Length > 2)
             {
-                string sql = "Select id, userName, password From user Where userName = '" + url_query[0] + "' AND password = '" + url_query[1] + "'";
-                DataTable dt = selectDB.SelectTable(sql);
+                string sql_user = "Select id, userName, password From user Where userName = '" + url_query[0] + "' AND password = '" + url_query[1] + "'";
+                DataTable dt_user = selectDB.SelectTable(sql_user);
+                string sql_ticker = "Select id From tickers Where id = '" + url_query[2] + "'";
+                DataTable dt_tickers = selectDB.SelectTable(sql_ticker);
 
-                Session["user"] = dt.Rows[0][1];
-                Session["user_id"] = dt.Rows[0][0];
-                Session["ticker_id"] = url_query[2];
+                if (dt_user.Rows.Count > 0 && dt_tickers.Rows.Count > 0)
+                {
+                    Session["user"] = dt_user.Rows[0][1];
+                    Session["user_id"] = dt_user.Rows[0][0];
+                    Session["ticker_id"] = url_query[2];
 
-                Response.Redirect("web_user_inf.aspx");
+                    Response.Redirect("web_user_inf.aspx");
+                }
+
             }
             else
             {
-                Console.WriteLine("Value not found");
+                
             }
 
 
@@ -68,7 +74,6 @@ namespace WebApplication2
             }
 
             DataTable user_dt = selectDB.SelectTable(login_sql);
-            string user_id = user_dt.Rows[0][0].ToString();
 
             if (user_dt.Rows.Count <= 0)
             {
@@ -77,7 +82,7 @@ namespace WebApplication2
             }
 
             Session["user"] = tbx_u_id;
-            Session["user_id"] = user_id;
+            Session["user_id"] = user_dt.Rows[0][0].ToString();
 
             if (selectedValue == "1")
             {

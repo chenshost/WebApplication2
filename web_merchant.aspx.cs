@@ -1,5 +1,4 @@
-﻿using BarcodeLib;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -42,7 +41,6 @@ namespace WebApplication2
         [WebMethod]
         public static string Exchange(string QRcode_id)
         {
-            //string DBconn = @"Data Source=.\SQLEXPRESS;Initial Catalog=mydb;Integrated Security=true";
             string DBconn = "server=163.17.136.73;port=1433;user id=a123;password=F3PDEGup6310gG;database=spaced;charset=utf8;";
             MySqlConnection conn = new MySqlConnection(DBconn);
 
@@ -100,9 +98,14 @@ namespace WebApplication2
 
         }
 
-        protected void btn_merchant_barcode_OnClick(object sender, EventArgs e)
+        protected void link_merchant_barcode_Click(object sender, EventArgs e)
         {
             Response.Redirect("web_merchant_barcode.aspx");
+        }
+
+        protected void link_scanner_Click(object sender, EventArgs e)
+        {
+            //Response.Redirect("web_merchant.aspx");
         }
     }
 }

@@ -8,7 +8,6 @@
         </ul>
         <asp:Button ID="btn_back_list" runat="server" Text="取消(返回兌換)" OnClick="btn_back_list_Click" class="btn" Visible="false"/>
     </div>
-
     <div>
         <h2>擁有的兌換卷</h2>
         <div>
