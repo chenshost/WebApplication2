@@ -26,11 +26,17 @@ namespace WebApplication2
 {
     public partial class web_merchant : System.Web.UI.Page
     {
-        //string DBconn = "server=163.17.136.73;port=1433;user id=a123;password=F3PDEGup6310gG;database=spaced;charset=utf8;";
+        SelectDBClass selectDB = new SelectDBClass();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (Session["user"] == null)
+            {
+                Server.Transfer("web_login.aspx");
+
+                Session.Remove("user");
+            }
+            string user_id = Session["user"].ToString();
         }
 
         [WebMethod]
@@ -92,8 +98,6 @@ namespace WebApplication2
                 return "";
             }
 
-            // 測試用回傳前端
-            //return "有船值" + QRcode_id;
         }
 
         protected void btn_merchant_barcode_OnClick(object sender, EventArgs e)

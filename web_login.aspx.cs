@@ -8,23 +8,45 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Reflection.Emit;
 using MySql.Data.MySqlClient;
+using Jose;
+using System.Security.Cryptography.X509Certificates;
+using System.Security.Cryptography;
+using WebApplication2.Api;
+using System.Security.Policy;
 
 namespace WebApplication2
 {
     public partial class web_login : System.Web.UI.Page
     {
-        // 全域
-        //string DBconn = @"Data Source=.\SQLEXPRESS;Initial Catalog=mydb;Integrated Security=true";
-        string DBconn = "server=163.17.136.73;port=1433;user id=a123;password=F3PDEGup6310gG;database=spaced;charset=utf8;";
+        SelectDBClass selectDB = new SelectDBClass();
+        LoginRoute loginRoute = new LoginRoute();
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            string url = Request.Url.Query.ToString();
+            string[] url_query = url.Split(new string[] { "?userID=", "&Password=", "&TickerID="}, StringSplitOptions.RemoveEmptyEntries);
+
+            if (url_query.Length > 1)
+            {
+                string sql = "Select id, userName, password From user Where userName = '" + url_query[0] + "' AND password = '" + url_query[1] + "'";
+                DataTable dt = selectDB.SelectTable(sql);
+
+                Session["user"] = dt.Rows[0][1];
+                Session["user_id"] = dt.Rows[0][0];
+                Session["ticker_id"] = url_query[2];
+
+                Response.Redirect("web_user_inf.aspx");
+            }
+            else
+            {
+                Console.WriteLine("Value not found");
+            }
+
 
         }
 
         protected void login_Click(object sender, EventArgs e)
         {
-            // 登入資料
             string tbx_u_id = tbox_ac.Text; // ac
             string tbx_key = tbox_key.Text; // pw
             if (tbx_u_id == "" || tbx_key == "")
@@ -33,67 +55,37 @@ namespace WebApplication2
                 return;
             }
 
-            // 撈使用者資料
-            //SqlConnection cn = new SqlConnection(DBconn);   // 連線database
-            MySqlConnection cn = new MySqlConnection(DBconn);
-            //cn.ConnectionString = DBconn;
-
             string selectedValue = SelectBox.SelectedValue;
             string login_sql = "";
 
             if (selectedValue == "1")
             {
-                login_sql = "Select userName, password From user Where userName = @user_id AND password = @key";  // sql語法
+                login_sql = "Select id, userName, password From user Where userName = '" + tbx_u_id + "' AND password = '" + tbx_key + "'";
             }
             else if (selectedValue == "2")
             {
-                login_sql = "Select name, password From merchant Where name = @user_id AND password = @key";  // sql語法
+                login_sql = "Select id, name, password From merchant Where name = '" + tbx_u_id + "' AND password = '" + tbx_key + "'";
             }
 
-            MySqlCommand login_sql_run = new MySqlCommand(login_sql, cn);   // sql指令
+            DataTable user_dt = selectDB.SelectTable(login_sql);
+            string user_id = user_dt.Rows[0][0].ToString();
 
-            // sql
-            cn.Open();
-
-            login_sql_run.Parameters.AddWithValue("@user_id", tbx_u_id);
-            login_sql_run.Parameters.AddWithValue("@key", tbx_key);
-
-            cn.Close();
-
-            // 
-            MySqlDataAdapter adapter = new MySqlDataAdapter(login_sql_run);
-            DataTable user_dt = new DataTable();
-            adapter.Fill(user_dt);
             if (user_dt.Rows.Count <= 0)
             {
                 Response.Write("<script>alert('帳號或密碼錯誤');</script>");
                 return;
             }
 
-            string user_id = user_dt.Rows[0][0].ToString();
-            //string user_name = user_dt.Rows[0][2].ToString();
-            string key = user_dt.Rows[0][1].ToString();
-            //string user_grade = user_dt.Rows[0][5].ToString();
+            Session["user"] = tbx_u_id;
+            Session["user_id"] = user_id;
 
-            // 驗證使用者
-            if (tbx_u_id == user_id && tbx_key == key)
+            if (selectedValue == "1")
             {
-                // 將登入帳號記錄在 Session 內
-                Session["user"] = tbx_u_id;
-                //Session["grade"] = user_grade;
-                //Session["name"] = user_name;
-
-                // Route
-                if (selectedValue == "1")
-                {
-                    Response.Redirect("web_user_inf.aspx");
-                }
-                else if (selectedValue == "2")
-                {
-                    Response.Redirect("web_merchant.aspx");
-                    //Response.Redirect("web_admin_page.aspx");
-                }
-
+                Response.Redirect("web_user_inf.aspx");
+            }
+            else if (selectedValue == "2")
+            {
+                Response.Redirect("web_merchant.aspx");
             }
         }
 

@@ -19,9 +19,8 @@
     <script type="text/javascript">
         // 掃描結果.文字
         function onQRCodeScanned(scannedText) {
-            
-
             var scannedTextMemo = document.getElementById("scannedTextMemo");
+
             if (scannedTextMemo) {
                 scannedTextMemo.value = scannedText;
                 alert(scannedText);

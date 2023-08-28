@@ -15,22 +15,31 @@ namespace WebApplication2
     {
 
         /// <summary>
-        /// btn_task 控制項。
+        /// link_task 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_task;
+        protected global::System.Web.UI.WebControls.LinkButton link_task;
 
         /// <summary>
-        /// listView_user_inf 控制項。
+        /// link_user_inf 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView listView_user_inf;
+        protected global::System.Web.UI.WebControls.LinkButton link_user_inf;
+
+        /// <summary>
+        /// btn_back_list 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_back_list;
 
         /// <summary>
         /// listView_user_tickers 控制項。
