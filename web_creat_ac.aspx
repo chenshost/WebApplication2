@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="web_creat_ac.aspx.cs" Inherits="WebApplication2.web_creat_ac" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h1>創建帳號</h1>
-    <button><a runat="server" href="~/web_login.aspx">回上一頁</a></button>
+    <button><a runat="server" href="~/web/login.aspx">回上一頁</a></button>
     <div>
         <formview ID="FormView1" runat="server" onsubmit="return confirm()">
             <table>

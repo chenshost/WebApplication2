@@ -20,18 +20,17 @@ using System.Web.Configuration;
 using System.Text.RegularExpressions;
 using MySql.Data.MySqlClient;
 
-
 namespace WebApplication2
 {
     public partial class web_merchant : System.Web.UI.Page
     {
-        SelectDBClass selectDB = new SelectDBClass();
+        static DataBassClass dbClass = new DataBassClass();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["user"] == null)
             {
-                Server.Transfer("web_login.aspx");
+                Server.Transfer("web/login.aspx");
 
                 Session.Remove("user");
             }
@@ -47,6 +46,7 @@ namespace WebApplication2
             string sql_sel = "SELECT * FROM tickers WHERE id = @ticker_id";
             MySqlCommand sql_sel_run = new MySqlCommand(sql_sel, conn);
 
+
             conn.Open();
 
             //sql_run.Parameters.AddWithValue("@data", barcode_id);
@@ -57,6 +57,8 @@ namespace WebApplication2
             MySqlDataAdapter sql_sel_fill = new MySqlDataAdapter(sql_sel_run);
             DataTable sql_sel_dt = new DataTable();
             sql_sel_fill.Fill(sql_sel_dt);
+
+            DataTable scan_dt = dbClass.SelectTable(sql_sel);
 
             conn.Close();
 

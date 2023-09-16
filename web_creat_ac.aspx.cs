@@ -21,8 +21,8 @@ namespace WebApplication2
         protected void Creat_ac(object sender, EventArgs e)
         {
             #region SqlDataSource方法
-            //SelectDBClass selectDB = new SelectDBClass();
-            //selectDB.GetSelectDb("Select * From Cars");
+            //dbClassClass dbClass = new dbClassClass();
+            //dbClass.GetdbClass("Select * From Cars");
 
             //string DBconn = @"Data Source=.\SQLEXPRESS;Initial Catalog=mydb;Integrated Security=true";
             //string db_show_cmd = "Select * From Cars";
@@ -87,7 +87,7 @@ namespace WebApplication2
 
                 //Session["user"] = id;
 
-                Server.Transfer("web_user_inf.aspx");
+                Response.Redirect("web/user_inf.aspx");
 
             }
 

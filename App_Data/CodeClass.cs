@@ -10,6 +10,7 @@ using System.Drawing.Imaging;
 using ZXing.Common;
 using ZXing.QrCode;
 using ZXing;
+using System.Text;
 
 namespace WebApplication2
 {
@@ -50,6 +51,21 @@ namespace WebApplication2
             qrCodeImage.Dispose(); // 釋放圖片資源
 
             return (base64Image);
-        } 
+        }
+
+        public string GenerateRandomCode(int length)
+        {
+            const string chars = "cVpdeZ9Cqonw2LThU1QGvHXtOIKSbWRuj6i8x0NYlkJfrzAPyM4asD753gEFmBvXq8";
+            var random = new Random(Guid.NewGuid().GetHashCode());
+            var result = new StringBuilder(length);
+
+            for (int i = 0; i < length; i++)
+            {
+                result.Append(chars[random.Next(chars.Length)]);
+            }
+
+            return result.ToString();
+        }
+
     }
 }

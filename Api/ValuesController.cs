@@ -9,14 +9,16 @@ using MySql.Data.MySqlClient;
 using System.Data;
 using MySqlX.XDevAPI;
 using System.Web;
+using static WebApplication2.Api.ValuesController;
 
 namespace WebApplication2.Api
 {
+
     [RoutePrefix("api/values")]
     public class ValuesController : ApiController
     {
-        SelectDBClass selectDB = new SelectDBClass();
-        LoginRoute loginRoute = new LoginRoute();
+        DataBassClass dbClass = new DataBassClass();
+        CodeClass codeClass = new CodeClass();
 
         // GET api/<controller>/5
         [HttpGet]
@@ -33,49 +35,44 @@ namespace WebApplication2.Api
         {
             if (postdata != null)
             {
-                string sql = "Select userName, password From user Where userName = '" + postdata.userID + "' AND password = '" + postdata.Password + "'";
-                DataTable dt = selectDB.SelectTable(sql);
+                string sql = "Select id From user Where userName = '" + postdata.userID + "'";
+                DataTable dt = dbClass.SelectTable(sql);
+                string ticker_sql = "Select * From tickers Where id = '" + postdata.TickerID + "' AND userID = '" + dt.Rows[0][0].ToString() + "'";
+                DataTable dt_ticker = dbClass.SelectTable(ticker_sql);
 
-                if (dt.Rows.Count > 0 )
+                //string user_id = dt.Rows[0][0].ToString();
+
+                if (dt.Rows.Count > 0 && dt_ticker.Rows.Count > 0)
                 {
-                    //var session = System.Web.HttpContext.Current.Session; //宣告Session
-                    //session.Add("user", postdata.userID); //將認證資訊放入Session
-                    //var temp = session["user"];
-                    HttpContext.Current.Session["user"] = postdata.userID;
-                    string success = "success!, userID:" + postdata.userID + ", Password:" + postdata.Password + ", Session" + HttpContext.Current.Session["user"].ToString();
+                    Guid verify = Guid.NewGuid();
+                    // guid不能加字串 資料欄長度會爆掉(varchar(38))
 
-                    var response = Request.CreateResponse(HttpStatusCode.Moved);
-                    response.Headers.Location = new Uri("~/web_login.aspx");
+                    string verifi_time = DateTime.Now.AddMinutes(5).ToString("yyyy-MM-dd HH:mm:ss");
 
-                    //return Ok(response);
-                    return Redirect("~/WebForm1.aspx"); // 打開檔案
+                    string verifi_sql = @"insert into verify (code, time, user_id, ticker_id) 
+                                          values ('" + verify + "', '" + verifi_time + "', '" + dt.Rows[0][0].ToString() + "', '" + dt_ticker.Rows[0][0].ToString() + "')";
+                    dbClass.Insert(verifi_sql);
+
+                    return Ok(verify);
                 }
                 else
                 {
-                    string return_ = "false, userID:" + postdata.userID + ", Password:" + postdata.Password;
-                    return Ok(return_);
+                    //string return_ = "false, userID:" + postdata.userID + ", Password:" + postdata.Password;
+                    return Ok("Wrong Data");
                 }
             }
             else
             {
                 return BadRequest("invalid data!");
             }
-
         }
 
         public class PostData
         {
             public string userID { get; set; }
-            public string Password { get; set; }
+            //public string Password { get; set; }
+            public string TickerID { get; set; }
         }
-
-
-        //JSON = {
-        //KEY : VALUE
-        // "name" : "alan",
-        // "age": 18,
-        // "address": "",
-        // }
 
         // PUT api/<controller>/5
         public void Put(int id, [FromBody] string value)

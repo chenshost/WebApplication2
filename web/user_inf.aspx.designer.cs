@@ -11,8 +11,17 @@ namespace WebApplication2
 {
 
 
-    public partial class web_user_inf
+    public partial class user_inf
     {
+
+        /// <summary>
+        /// link_menu 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton link_menu;
 
         /// <summary>
         /// link_task 控制項。
@@ -22,6 +31,15 @@ namespace WebApplication2
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton link_task;
+
+        /// <summary>
+        /// link_community 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton link_community;
 
         /// <summary>
         /// link_user_inf 控制項。

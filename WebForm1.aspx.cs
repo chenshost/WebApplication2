@@ -7,6 +7,11 @@ namespace WebApplication2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                Label1.Text = "";
+                Label2.Text = "";
+            }
             // 初始點，如同main
         }
 
@@ -19,22 +24,22 @@ namespace WebApplication2
             TextBox2.Text = "";
             
             //對資料庫作動
-            string cnDB = @"Data Source=.\SQLEXPRESS;Initial Catalog=mydb;Integrated Security=true";    // 連線帳密
-            SqlConnection cn = new SqlConnection(cnDB);     // 連線database
+            //string cnDB = @"Data Source=.\SQLEXPRESS;Initial Catalog=mydb;Integrated Security=true";    // 連線帳密
+            //SqlConnection cn = new SqlConnection(cnDB);     // 連線database
 
-            string comd = "Insert Into Table_1 (text1, text2) Values (@t1, @t2)";       //sql語法
-            SqlCommand sqlCommand = new SqlCommand(comd, cn);       // run指令
+            //string comd = "Insert Into Table_1 (text1, text2) Values (@t1, @t2)";       //sql語法
+            //SqlCommand sqlCommand = new SqlCommand(comd, cn);       // run指令
 
-            sqlCommand.Parameters.AddWithValue("@t1", Label1.Text);
-            sqlCommand.Parameters.AddWithValue("@t2", Label2.Text);
+            //sqlCommand.Parameters.AddWithValue("@t1", Label1.Text);
+            //sqlCommand.Parameters.AddWithValue("@t2", Label2.Text);
 
-            cn.Open(); //開始連線，不可下太多次，會報錯
+            //cn.Open(); //開始連線，不可下太多次，會報錯
 
-            sqlCommand.ExecuteNonQuery();
+            //sqlCommand.ExecuteNonQuery();
 
-            sqlCommand.Parameters.Clear();
+            //sqlCommand.Parameters.Clear();
 
-            cn.Close(); //關閉連線
+            //cn.Close(); //關閉連線
         }
     }
 }

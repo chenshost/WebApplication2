@@ -5,7 +5,7 @@
     <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox><br>
     <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click"/><br>
 
-    <asp:Label ID="Label1" runat="server" Text=""></asp:Label><br>
-    <asp:Label ID="Label2" runat="server" Text=""></asp:Label>
+    <asp:Label ID="Label1" runat="server" Text="ispostback測試"></asp:Label><br>
+    <asp:Label ID="Label2" runat="server" Text="aaa"></asp:Label>
 
 </asp:Content>

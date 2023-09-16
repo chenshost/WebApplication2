@@ -1,9 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="web_user_inf.aspx.cs" Inherits="WebApplication2.web_user_inf" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="user_inf.aspx.cs" Inherits="WebApplication2.user_inf" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div>
-        <%--<asp:Button ID="btn_task" runat="server" Text="任務兌換" OnClick="btn_task_Click" />--%>
         <ul class="nav nav-tabs">
-            <li><asp:LinkButton runat="server" ID="link_task" OnClick="btn_task_Click">任務兌換</asp:LinkButton></li>
+            <li class="active"><asp:LinkButton runat="server" ID="link_menu">首頁</asp:LinkButton></li>
+            <li><asp:LinkButton runat="server" ID="link_task" OnClick="link_task_Click">任務兌換</asp:LinkButton></li>
+            <li><asp:LinkButton runat="server" ID="link_community" OnClick="link_community_Click">社群</asp:LinkButton></li>
             <li><asp:LinkButton runat="server" ID="link_user_inf">個人資料</asp:LinkButton></li>
         </ul>
         <asp:Button ID="btn_back_list" runat="server" Text="取消(返回兌換)" OnClick="btn_back_list_Click" class="btn" Visible="false"/>
@@ -17,9 +18,9 @@
                         <tr runat="server">
                             <th runat="server">條碼ID</th>
                             <th runat="server">票卷名稱</th>
-                            <th runat="server">任務id</th>
-                            <th runat="server">廠商</th>
-                            <th runat="server">兌換時間</th>
+                            <th runat="server">商家名稱</th>
+                            <th runat="server">兌換截止時間</th>
+                            <th runat="server">兌換狀態</th>
                         </tr>
                         <tr id="itemPlaceholder" runat="server" />
                     </table>
@@ -29,13 +30,13 @@
                         <td>
                             <asp:Label ID="Label5" runat="server" Text='<%#Eval("id") %>'></asp:Label></td>
                         <td>
-                            <asp:Label ID="Label8" runat="server" Text='<%#Eval("voucher_id") %>'></asp:Label></td>
+                            <asp:Label ID="Label8" runat="server" Text='<%#Eval("name") %>'></asp:Label></td>
                         <td>
-                            <asp:Label ID="Label9" runat="server" Text='<%#Eval("task_id") %>'></asp:Label></td>
-                        <%--<td>
-                            <asp:Label ID="Label7" runat="server" Text='<%#Eval("merchant_id") %>'></asp:Label></td>--%>
+                            <asp:label id="label7" runat="server" text='<%#Eval("merchant_name") %>'></asp:label></td>
                         <td>
-                            <asp:Label ID="label_ticker_used" runat="server" Text='<%#Eval("exchange_time") %>'></asp:Label></td>
+                            <asp:Label ID="label_ticker_used" runat="server" Text='<%#Eval("deadline") %>'></asp:Label></td>
+                        <td>
+                            <asp:Label ID="label1" runat="server" Text='<%#Eval("exchange_status") %>'></asp:Label></td>
                         <td>
                             <asp:Button ID="btn_exchange" runat="server" Text="兌換" OnClick="btn_exchange_Click" CommandArgument='<%# Container.DisplayIndex %>' Visible="true" class="btn"/></td>
                     </tr>

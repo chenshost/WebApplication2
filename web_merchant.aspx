@@ -9,11 +9,7 @@
     <div>
         <h2>掃描</h2>
         <div>
-            <div id="scanner" style="width: 500px;">
-                <%--<div>
-                    <video class="qrPreviewVideo" autoplay="" tabindex="0" src="" playsinline="true"></video>
-                </div>--%>
-            </div>
+            <div id="scanner" style="width: 500px;"></div>
         </div>
         <div>
             <textarea id="scannedTextMemo" class="textInput form-memo form-field-input textInput-readonly" rows="3" readonly=""></textarea>
