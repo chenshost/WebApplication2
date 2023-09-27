@@ -81,3 +81,21 @@
 .fw-bold {
     font-weight: bold;
 }
+
+table {
+    border-collapse: collapse;
+/*    margin-bottom: 10px;*/
+}
+
+.post_link_btn {
+
+}
+
+.post_link_btn td {
+    border-bottom: 1pt solid lightgray;
+    padding-bottom: 10px;
+}
+
+.post_like {
+    color: #f06836;
+}

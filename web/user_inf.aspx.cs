@@ -51,6 +51,7 @@ namespace WebApplication2
                                            inner join merchant as m
                                            on v.merchant_id = m.id
                                            where t.userID =  '" + Session["user_id"].ToString() + "'";
+
                 DataTable user_ticker_dt = dbClass.SelectTable(sel_user_ticker);
 
                 listView_user_tickers.DataSource = user_ticker_dt;

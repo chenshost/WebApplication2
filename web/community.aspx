@@ -6,10 +6,14 @@
 
     <div>
         <ul class="nav nav-tabs">
-            <li><asp:LinkButton runat="server" ID="link_menu" OnClick="link_menu_Click">首頁</asp:LinkButton></li>
-            <li><asp:LinkButton runat="server" ID="link_task" OnClick="link_task_Click">任務兌換</asp:LinkButton></li>
-            <li class="active"><asp:LinkButton runat="server" ID="link_community" OnClick="link_community_Click">社群</asp:LinkButton></li>
-            <li><asp:LinkButton runat="server" ID="link_user_inf">個人資料</asp:LinkButton></li>
+            <li>
+                <asp:LinkButton runat="server" ID="link_menu" OnClick="link_menu_Click">首頁</asp:LinkButton></li>
+            <li>
+                <asp:LinkButton runat="server" ID="link_task" OnClick="link_task_Click">任務兌換</asp:LinkButton></li>
+            <li class="active">
+                <asp:LinkButton runat="server" ID="link_community" OnClick="link_community_Click">社群</asp:LinkButton></li>
+            <li>
+                <asp:LinkButton runat="server" ID="link_user_inf">個人資料</asp:LinkButton></li>
         </ul>
     </div>
     <div class="container col-xs-6 col-xs-offset-3 table-bordered">
@@ -47,40 +51,88 @@
                         <asp:LinkButton runat="server" ID="link_tweets">貼文&公告</asp:LinkButton></li>
                     <li>
                         <asp:LinkButton runat="server" ID="link_tweets_replies">社群成員名單</asp:LinkButton></li>
-                    <li>
-                        <asp:LinkButton runat="server" ID="link_media">設定</asp:LinkButton></li>
+                    <%--<li>
+                        <asp:LinkButton runat="server" ID="link_media">設定</asp:LinkButton></li>--%>
                 </ul>
             </div>
         </div>
         <div id="post_area" style="height: auto">
-            <div>
-                <asp:ListView ID="listView_community" runat="server">
-                    <LayoutTemplate>
-                        <table runat="server">
-                            <tr id="itemPlaceholder" runat="server" />
-                        </table>
-                    </LayoutTemplate>
-                    <ItemTemplate runat="server">
-                        <tr runat="server">
-                            <td runat="server" rowspan="2" class="col-xs-1">
-                                <div id="post_user_headshot" class="div-round">
-                            </td>
-                            <td runat="server" class="col-xs-offset-2">
-                                <asp:Label ID="label_user_name" runat="server" Text='<%#Eval("userName") %>' class="fw-bold"></asp:Label></td>
-                        </tr>
-                        <tr runat="server">
-                            <td runat="server" colspan="3" class="col-xs-offset-2">
-                                <asp:Label ID="post_text" runat="server" Text='<%#Eval("postContent") %>' class=""></asp:Label></td>
-                        </tr>
-                        <tr runat="server">
-                            <td class="col-xs-offset-2"></td>
-                            <td runat="server" id="post_td_comment" class="col-xs-offset-2 col-xs-3"><i class="fa-regular fa-comment svg-icon"></i><asp:Label ID="label_comment" runat="server" Text=" 0" class="text-color"></asp:Label></td>
-                            <td runat="server" id="post_td_share" class="col-xs-3"><i class="fa-solid fa-retweet svg-icon"></i><asp:Label ID="label_share" runat="server" Text=" 0" class="text-color"></asp:Label></td>
-                            <td runat="server" id="post_td_like" class="col-xs-3"><i class="fa-regular fa-heart svg-icon"></i><asp:Label ID="label_like" runat="server" Text=" 0" class="text-color"></asp:Label></td>
-                        </tr>
-                    </ItemTemplate>
-                </asp:ListView>
-            </div>
+            <asp:UpdatePanel ID="updatePanel" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+                    <!-- 這裡是需要動態更新的內容 -->
+                    <asp:ListView ID="listView_community" runat="server">
+                        <LayoutTemplate>
+                            <table runat="server">
+                                <tr id="itemPlaceholder" runat="server" />
+                            </table>
+                        </LayoutTemplate>
+                        <ItemTemplate runat="server">
+                            <tr runat="server">
+                                <td runat="server" rowspan="2" class="col-xs-1">
+                                    <div id="post_user_headshot" class="div-round">
+                                </td>
+                                <td runat="server" class="col-xs-offset-2">
+                                    <asp:Label ID="label_user_name" runat="server" Text='<%#Eval("userName") %>' class="fw-bold"></asp:Label></td>
+                                <td runat="server" class="col-xs-offset-2" visible="false">
+                                    <asp:Label ID="hidden_id" runat="server" Text='<%#Eval("id") %>'></asp:Label></td>
+                            </tr>
+                            <tr runat="server">
+                                <td runat="server" colspan="3" class="col-xs-offset-2">
+                                    <asp:Label ID="post_text" runat="server" Text='<%#Eval("postContent") %>' class=""></asp:Label></td>
+                            </tr>
+                            <tr runat="server" id="post_link_btn" class="post_link_btn">
+                                <td class="col-xs-offset-2"></td>
+                                <td runat="server" id="post_td_comment" class="col-xs-offset-2 col-xs-3">
+                                    <asp:LinkButton ID="link_community" runat="server">
+                                        <i class="fa-regular fa-comment svg-icon"></i>
+                                        <asp:Label ID="label_comment" runat="server" Text=" 0" class="text-color"></asp:Label>
+                                    </asp:LinkButton>
+                                </td>
+                                <td runat="server" id="post_td_share" class="col-xs-3">
+                                    <asp:LinkButton ID="link_share" runat="server">
+                                        <i class="fa-solid fa-retweet svg-icon"></i>
+                                        <asp:Label ID="label_share" runat="server" Text=" 0" class="text-color"></asp:Label>
+                                    </asp:LinkButton>
+                                </td>
+                                <td runat="server" id="post_td_like" class="col-xs-3">
+                                    <asp:LinkButton ID="link_like" runat="server" OnClick="Link_like_Click">
+                                        <i class="fa-regular fa-heart svg-icon"></i>
+                                        <asp:Label ID="label_like" runat="server" Text='<%#Eval("post_likes") %>' class="text-color" ></asp:Label>
+                                    </asp:LinkButton>
+                                </td>
+                            </tr>
+                        </ItemTemplate>
+                    </asp:ListView>
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
     </div>
+
+    <script type="text/javascript" src="/Scripts/jquery-3.4.1.js"></script>
+    <script type="text/javascript"></script>
+    <script>
+        var _target = new EventTarget();
+        setInterval(function () {
+            $window_roll = $(document).height() - $(window).height();
+
+            if ($(document).scrollTop() + 10 > $window_roll) {
+                console.log("底 觸發");
+
+                $.ajax({
+                    type: "POST",
+                    url: 'community.aspx/listview_renew',
+                    data: JSON.stringify({ reset: "a" }),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (response) {
+                        console.log(response.d);
+                    },
+                    error: function (e) {
+                        console.log(JSON.stringify(e));
+                    }
+                });
+            }
+        }, 250);
+    </script>
+
 </asp:Content>

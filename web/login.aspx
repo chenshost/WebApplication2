@@ -11,8 +11,8 @@
     <div class="div_login">
         <h1>登入</h1>
         <div>
-            <asp:TextBox ID="tbox_ac" runat="server" class="form-control" placeholder="帳號"></asp:TextBox><br>
-            <asp:TextBox ID="tbox_key" runat="server" Type="password" class="form-control" placeholder="密碼"></asp:TextBox><br>
+            <asp:TextBox ID="tbox_ac" runat="server" class="form-control" placeholder="帳號" Text = "1zz"></asp:TextBox><br>
+            <asp:TextBox ID="tbox_key" runat="server" Type="password" class="form-control" placeholder="密碼" Text = "1zz"></asp:TextBox><br>
             <asp:DropDownList ID="SelectBox" runat="server" CssClass="selectpicker">
                 <asp:ListItem Value="1">使用者</asp:ListItem>
                 <asp:ListItem Value="2">商家</asp:ListItem>

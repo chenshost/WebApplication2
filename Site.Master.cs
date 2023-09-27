@@ -40,7 +40,7 @@ namespace WebApplication2
         {
             Session.Remove("user");
             //Session["user"] = null;
-            Response.Redirect("web/login.aspx");
+            Response.Redirect("../web/login.aspx");
         }
     }
 }

@@ -159,13 +159,13 @@ namespace WebApplication2
         protected global::System.Web.UI.WebControls.LinkButton link_tweets_replies;
 
         /// <summary>
-        /// link_media 控制項。
+        /// updatePanel 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton link_media;
+        protected global::System.Web.UI.UpdatePanel updatePanel;
 
         /// <summary>
         /// listView_community 控制項。

@@ -29,6 +29,9 @@ namespace WebApplication2
             // url處理
             if (url.Length > 1 && url[1] != null)
             {
+                //tbox_ac.Text = "1zz";
+                //tbox_key.Text = "1zz";
+
                 string post_data_sql = "select * from verify where code = '"+ url[1] + "'";
                 DataTable post_data_dt = dbClass.SelectTable(post_data_sql);
 

@@ -70,7 +70,6 @@
                 <p>&copy; <%: DateTime.Now.Year %> - 兌換系統</p>
             </footer>
         </div>
-
     </form>
 </body>
 </html>
