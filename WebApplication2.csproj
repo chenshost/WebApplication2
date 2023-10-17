@@ -241,6 +241,8 @@
     <Content Include="Scripts\quagga.min.js" />
     <Content Include="Scripts\WebCam.js" />
     <Content Include="WebForm1.aspx" />
+    <Content Include="web\share_post.aspx" />
+    <Content Include="web\tickers.aspx" />
     <Content Include="web_admin_barcode.aspx" />
     <Content Include="web_admin_barcode_edit.aspx" />
     <Content Include="web_admin_page.aspx" />
@@ -363,6 +365,20 @@
     </Compile>
     <Compile Include="WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="web\share_post.aspx.cs">
+      <DependentUpon>share_post.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="web\share_post.aspx.designer.cs">
+      <DependentUpon>share_post.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="web\tickers.aspx.cs">
+      <DependentUpon>tickers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="web\tickers.aspx.designer.cs">
+      <DependentUpon>tickers.aspx</DependentUpon>
     </Compile>
     <Compile Include="web_admin_barcode.aspx.cs">
       <DependentUpon>web_admin_barcode.aspx</DependentUpon>

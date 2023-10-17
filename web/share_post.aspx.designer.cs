@@ -7,47 +7,38 @@
 // </自動產生>
 //------------------------------------------------------------------------------
 
-namespace WebApplication2
+namespace WebApplication2.web
 {
 
 
-    public partial class user_inf
+    public partial class share_post
     {
 
         /// <summary>
-        /// link_menu 控制項。
+        /// updatePanel 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton link_menu;
+        protected global::System.Web.UI.UpdatePanel updatePanel;
 
         /// <summary>
-        /// link_task 控制項。
+        /// listView_community 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton link_task;
+        protected global::System.Web.UI.WebControls.ListView listView_community;
 
         /// <summary>
-        /// link_community 控制項。
+        /// posts_bottom_label 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton link_community;
-
-        /// <summary>
-        /// link_user_inf 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton link_user_inf;
+        protected global::System.Web.UI.WebControls.Label posts_bottom_label;
     }
 }

@@ -12,6 +12,14 @@ namespace WebApplication2
     public class DataBassClass
     {
         private string DBconn = "server=163.17.136.73;port=1433;user id=a123;password=F3PDEGup6310gG;database=spaced;charset=utf8;TreatTinyAsBoolean=false;";
+
+        // 以後要改成SqlDataReader.Read 方法
+        // 不然會增加記憶體(伺服器上)
+        // while去判斷有無資料 沒有就跳出
+        
+        // 前後端分離 
+        // 技術名詞 spa ssr 
+
         public DataTable SelectTable(string strurl)
         {
             DataTable dt = new DataTable();

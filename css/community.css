@@ -92,10 +92,35 @@ table {
 }
 
 .post_link_btn td {
-    border-bottom: 1pt solid lightgray;
-    padding-bottom: 10px;
+    padding-top: 15px;
 }
 
-.post_like {
+.post_like{
     color: #f06836;
+}
+
+.post_like i {
+    color: #f06836;
+}
+
+.post_like1 #label_like {
+    color: #f06836;
+}
+
+.post_head {
+    padding-top: 15px;
+}
+
+.post_bottom {
+    border-bottom: 1pt solid lightgray;
+    padding-bottom: 20px;
+/*    margin-bottom: 20px;*/
+    height: 10px;
+}
+
+.post-headshot {
+    background-color: lightgray;
+    width: 30px;
+    height: 30px;
+    border-radius: 999em;
 }

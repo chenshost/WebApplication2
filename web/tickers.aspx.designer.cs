@@ -7,11 +7,11 @@
 // </自動產生>
 //------------------------------------------------------------------------------
 
-namespace WebApplication2
+namespace WebApplication2.web
 {
 
 
-    public partial class user_inf
+    public partial class tickers
     {
 
         /// <summary>
@@ -49,5 +49,32 @@ namespace WebApplication2
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton link_user_inf;
+
+        /// <summary>
+        /// listView_user_tickers 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView listView_user_tickers;
+
+        /// <summary>
+        /// listView_exchange 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView listView_exchange;
+
+        /// <summary>
+        /// qrCodeContainer 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl qrCodeContainer;
     }
 }
