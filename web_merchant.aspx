@@ -1,19 +1,17 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="web_merchant.aspx.cs" Inherits="WebApplication2.web_merchant" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
+    <h2>掃描</h2>
     <div>
-        <ul class="nav nav-tabs">
-            <li><asp:LinkButton runat="server" ID="link_scanner" OnClick="link_scanner_Click">掃描</asp:LinkButton></li>
-            <li><asp:LinkButton runat="server" ID="link_merchant_barcode" OnClick="link_merchant_barcode_Click">票券資料</asp:LinkButton></li>
-        </ul>
+        <asp:Button ID="btn_merchant_barcode" runat="server" Text="條碼資訊" Onclick="btn_merchant_barcode_OnClick" />
+    </div>
+    <div class="qrscanner" id="scanner">
+        <div>
+            <video class="qrPreviewVideo" autoplay="" tabindex="0" src="" playsinline="true"></video>
+        </div>
     </div>
     <div>
-        <h2>掃描</h2>
-        <div>
-            <div id="scanner" style="width: 500px;"></div>
-        </div>
-        <div>
-            <textarea id="scannedTextMemo" class="textInput form-memo form-field-input textInput-readonly" rows="3" readonly=""></textarea>
-        </div>
+        <textarea id="scannedTextMemo" class="textInput form-memo form-field-input textInput-readonly" rows="3" readonly=""></textarea>
     </div>
 
     <script type="text/javascript" src="Scripts/JsQR/jsqrscanner.nocache.js"></script>
@@ -21,8 +19,9 @@
     <script type="text/javascript">
         // 掃描結果.文字
         function onQRCodeScanned(scannedText) {
-            var scannedTextMemo = document.getElementById("scannedTextMemo");
+            
 
+            var scannedTextMemo = document.getElementById("scannedTextMemo");
             if (scannedTextMemo) {
                 scannedTextMemo.value = scannedText;
                 alert(scannedText);

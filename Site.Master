@@ -53,6 +53,12 @@
                         <%--<li><a runat="server" href="~/">首頁</a></li--%>
                         <%--<li><a runat="server" href="~/About">關於</a></li>--%>
                         <%--<li><a runat="server" href="~/Contact">連絡人</a></li>--%>
+                        <%--<li><a runat="server" href="~/WebForm1.aspx">表單</a></li>--%>
+                        <%--<li><a runat="server" href="~/web_shopping.aspx">商品頁</a></li>--%>
+                        <%--<li><a runat="server" href="~/web_cars.aspx">購物欄</a></li>--%>
+                        <li class="li_user" style="display: none;"><a runat="server" href="~/web_user_inf.aspx">使用者資訊</a></li>
+                        <li class="li_admin" style="display: none;"><a runat="server" href="~/web_admin_barcode.aspx">掃描</a></li>
+                        <li class="li_admin" style="display: none;"><a runat="server" href="~/web_admin_page.aspx">管理</a></li>
                     </ul>
                     <div class="navbar-right">
                         <asp:label ID="label_user_id" runat="server"></asp:label>
@@ -67,9 +73,10 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - 兌換系統</p>
+                <p>&copy; <%: DateTime.Now.Year %> - 我的 ASP.NET 應用程式</p>
             </footer>
         </div>
+
     </form>
 </body>
 </html>
