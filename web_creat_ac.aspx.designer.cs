@@ -24,6 +24,24 @@ namespace WebApplication2
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl FormView1;
 
         /// <summary>
+        /// tbox_id 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbox_id;
+
+        /// <summary>
+        /// tbox_key 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbox_key;
+
+        /// <summary>
         /// tbox_name 控制項。
         /// </summary>
         /// <remarks>
@@ -42,13 +60,13 @@ namespace WebApplication2
         protected global::System.Web.UI.WebControls.TextBox tbox_email;
 
         /// <summary>
-        /// tbox_key 控制項。
+        /// tbox_money 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbox_key;
+        protected global::System.Web.UI.WebControls.TextBox tbox_money;
 
         /// <summary>
         /// btn_creat 控制項。

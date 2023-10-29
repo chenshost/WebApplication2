@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BarcodeLib;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -51,41 +52,39 @@ namespace WebApplication2
 
         protected void btn_barcode_test_Click(object sender, EventArgs e)
         {
-            //user_inf web_barcode = new user_inf();
+            //web_user_inf web_barcode = new web_user_inf();
             //web_barcode.ProdBarcode(barcode);
 
-            #region 請把barcode修改成qrcode
-            //    string barcode = tbox_barcode_test.Text;
+            string barcode = tbox_barcode_test.Text;
 
-            //    if (barcode == null || barcode == "")
-            //    {
-            //        Response.Write("<script>alert('請輸入id');</script>");
-            //    }
-            //    else
-            //    {
-            //        String photoSavePath = Server.MapPath("~/photo") + "\\" + "barcode.png";
-            //        if (File.Exists(photoSavePath))
-            //        {
-            //            File.Delete(photoSavePath);
-            //        }
+            if (barcode == null || barcode == "")
+            {
+                Response.Write("<script>alert('請輸入id');</script>");
+            }
+            else
+            {
+                String photoSavePath = Server.MapPath("~/photo") + "\\" + "barcode.png";
+                if (File.Exists(photoSavePath))
+                {
+                    File.Delete(photoSavePath);
+                }
 
-            //        BarcodeLib.Barcode bc = new BarcodeLib.Barcode();
+                BarcodeLib.Barcode bc = new BarcodeLib.Barcode();
 
-            //        bc.IncludeLabel = true;
-            //        bc.LabelFont = new Font("Verdana", 8f);//標籤字型與大小
-            //        bc.Width = 300;//標籤寬度
-            //        bc.Height = 150;//標籤高度
+                bc.IncludeLabel = true;
+                bc.LabelFont = new Font("Verdana", 8f);//標籤字型與大小
+                bc.Width = 300;//標籤寬度
+                bc.Height = 150;//標籤高度
 
-            //        System.Drawing.Image img = bc.Encode(TYPE.CODE128, barcode, bc.Width, bc.Height);
-            //        img.Save(photoSavePath, System.Drawing.Imaging.ImageFormat.Png);
+                System.Drawing.Image img = bc.Encode(TYPE.CODE128, barcode, bc.Width, bc.Height);
+                img.Save(photoSavePath, System.Drawing.Imaging.ImageFormat.Png);
 
-            //        ImgBarcode.ImageUrl = "~/Photo/barcode.png"; //產生的barcode有固定檔名，故這邊可以寫死
-            //    }
-
-            //}
-            #endregion
-
+                ImgBarcode.ImageUrl = "~/Photo/barcode.png"; //產生的barcode有固定檔名，故這邊可以寫死
+            }
 
         }
+
+
+
     }
 }

@@ -11,43 +11,34 @@ namespace WebApplication2
 {
 
 
-    public partial class user_inf
+    public partial class WebForm4
     {
 
         /// <summary>
-        /// link_menu 控制項。
+        /// ListView1 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton link_menu;
+        protected global::System.Web.UI.WebControls.ListView ListView1;
 
         /// <summary>
-        /// link_task 控制項。
+        /// Button1 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton link_task;
+        protected global::System.Web.UI.WebControls.Button Button1;
 
         /// <summary>
-        /// link_community 控制項。
+        /// Label3 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton link_community;
-
-        /// <summary>
-        /// link_user_inf 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton link_user_inf;
+        protected global::System.Web.UI.WebControls.Label Label3;
     }
 }

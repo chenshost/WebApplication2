@@ -10,8 +10,7 @@ namespace WebApplication2
 {
     public partial class web_creat_ac : System.Web.UI.Page
     {
-        //string DBconn = @"Data Source=.\SQLEXPRESS;Initial Catalog=mydb;Integrated Security=true";
-        string DBconn = "server=163.17.136.73;port=1433;user id=a123;password=F3PDEGup6310gG;database=spaced;charset=utf8;";
+        string DBconn = @"Data Source=.\SQLEXPRESS;Initial Catalog=mydb;Integrated Security=true";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,8 +20,8 @@ namespace WebApplication2
         protected void Creat_ac(object sender, EventArgs e)
         {
             #region SqlDataSource方法
-            //dbClassClass dbClass = new dbClassClass();
-            //dbClass.GetdbClass("Select * From Cars");
+            //SelectDBClass selectDB = new SelectDBClass();
+            //selectDB.GetSelectDb("Select * From Cars");
 
             //string DBconn = @"Data Source=.\SQLEXPRESS;Initial Catalog=mydb;Integrated Security=true";
             //string db_show_cmd = "Select * From Cars";
@@ -43,11 +42,21 @@ namespace WebApplication2
             #endregion
 
 
+            string id = tbox_id.Text;
+            string key = tbox_key.Text;
             string name = tbox_name.Text;
             string email = tbox_email.Text;
-            string key = tbox_key.Text;
+            string money = tbox_money.Text;
 
-            if (name == null || name == "")
+            if (id == null || id =="")
+            {
+                Response.Write("<script>alert('請輸入帳號!');</script>");
+            }
+            else if (key == null || key == "")
+            {
+                Response.Write("<script>alert('請輸入密碼!');</script>");
+            }
+            else if (name == null || name == "")
             {
                 Response.Write("<script>alert('請輸入名子!');</script>");
             }
@@ -55,14 +64,17 @@ namespace WebApplication2
             {
                 Response.Write("<script>alert('請輸入Email!');</script>");
             }
-            else if (key == null || key == "")
+            else if (money == null || money == "")
             {
-                Response.Write("<script>alert('請輸入密碼!');</script>");
+                Response.Write("<script>alert('請儲值初始金額!');</script>");
+
+                //if (money > '1000')
+                //{
+
+                //}
             }
             else
             {
-
-
                 using (SqlConnection cn = new SqlConnection(DBconn))
                 {
                     string creat_ac_sql_cmd = "INSERT Users (user_id, key_word, user_name, user_mail, user_money, user_grade) " +
@@ -72,9 +84,11 @@ namespace WebApplication2
 
                     cn.Open();
 
+                    sql_cmd_run.Parameters.AddWithValue("@id", id);
+                    sql_cmd_run.Parameters.AddWithValue("@key", key);
                     sql_cmd_run.Parameters.AddWithValue("@name", name);
                     sql_cmd_run.Parameters.AddWithValue("@email", email);
-                    sql_cmd_run.Parameters.AddWithValue("@key", key);
+                    sql_cmd_run.Parameters.AddWithValue("@money", money);
 
                     sql_cmd_run.ExecuteNonQuery();
 
@@ -85,9 +99,9 @@ namespace WebApplication2
 
                 Response.Write("<script>alert('註冊成功!');</script>");
 
-                //Session["user"] = id;
+                Session["user"] = id;
 
-                Response.Redirect("web/user_inf.aspx");
+                Server.Transfer("web_user_inf.aspx");
 
             }
 

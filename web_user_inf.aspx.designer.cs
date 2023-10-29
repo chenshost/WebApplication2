@@ -7,48 +7,30 @@
 // </自動產生>
 //------------------------------------------------------------------------------
 
-namespace WebApplication2.web
+namespace WebApplication2
 {
 
 
-    public partial class tickers
+    public partial class web_user_inf
     {
 
         /// <summary>
-        /// link_menu 控制項。
+        /// btn_task 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton link_menu;
+        protected global::System.Web.UI.WebControls.Button btn_task;
 
         /// <summary>
-        /// link_task 控制項。
+        /// listView_user_inf 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton link_task;
-
-        /// <summary>
-        /// link_community 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton link_community;
-
-        /// <summary>
-        /// link_user_inf 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton link_user_inf;
+        protected global::System.Web.UI.WebControls.ListView listView_user_inf;
 
         /// <summary>
         /// listView_user_tickers 控制項。
@@ -58,15 +40,6 @@ namespace WebApplication2.web
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView listView_user_tickers;
-
-        /// <summary>
-        /// listView_exchange 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView listView_exchange;
 
         /// <summary>
         /// qrCodeContainer 控制項。

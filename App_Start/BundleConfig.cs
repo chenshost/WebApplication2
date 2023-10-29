@@ -33,13 +33,6 @@ namespace WebApplication2
             // 準備好生產時，請使用 https://modernizr.com 中的建置工具，只挑選您需要的測試
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                             "~/Scripts/modernizr-*"));
-            // 新增bootstrap v5.2.3
-            ScriptManager.ScriptResourceMapping.AddDefinition("bootstrap", new ScriptResourceDefinition
-            {
-                Path = "~/Scripts/bootstrap.min.js",
-                DebugPath = "~/Scripts/bootstrap.js",
-                LoadSuccessExpression = "bootstrap"
-            });
         }
     }
 }
