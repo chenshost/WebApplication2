@@ -29,14 +29,27 @@ namespace WebApplication2
             // url處理
             if (url.Length > 1 && url[1] != null)
             {
-                //tbox_ac.Text = "1zz";
-                //tbox_key.Text = "1zz";
-
                 string post_data_sql = "select * from verify where code = '"+ url[1] + "'";
                 DataTable post_data_dt = dbClass.SelectTable(post_data_sql);
 
                 DateTime nowtime = DateTime.Now;
                 DateTime verify_time = DateTime.Parse(post_data_dt.Rows[0][1].ToString());
+
+                string check_ticker = post_data_dt.Rows[0][3].ToString();
+
+                if (check_ticker == "")
+                {
+                    string user_data_sql = "select userName, Password from user where id = '" + post_data_dt.Rows[0][2].ToString() + "'";
+                    DataTable user_dt = dbClass.SelectTable(user_data_sql);
+
+                    Session["user"] = user_dt.Rows[0][0];
+                    Session["user_id"] = post_data_dt.Rows[0][2];
+                    Session["ticker_id"] = post_data_dt.Rows[0][3];
+
+                    //dbClass.Delete(delete_verify);
+
+                    Response.Redirect("community.aspx");
+                }
 
                 // 驗證
                 if (url[1] == post_data_dt.Rows[0][0].ToString() && nowtime < verify_time)
@@ -50,10 +63,11 @@ namespace WebApplication2
 
                     //dbClass.Delete(delete_verify);
 
-                    Response.Redirect("user_inf.aspx");
+                    Response.Redirect("tickers.aspx");
                 }
                 else
                 {
+
                     string delete_verify = "delete from verify where code = '" + url[1] + "'";
                     dbClass.Delete(delete_verify);
                     Response.Write("<script>alert('驗證過時，請重新再兌換！');</script>");
@@ -61,6 +75,8 @@ namespace WebApplication2
             }
 
         }
+
+
 
         protected void login_Click(object sender, EventArgs e)
         {

@@ -217,6 +217,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Community.js" />
+    <Content Include="WebForm1.aspx" />
     <Content Include="WebForm2.aspx" />
     <Content Include="web\community.aspx" />
     <Content Include="Contact.aspx" />
@@ -240,7 +242,6 @@
     <Content Include="Scripts\JsQR\jsqrscanner.nocache.js" />
     <Content Include="Scripts\quagga.min.js" />
     <Content Include="Scripts\WebCam.js" />
-    <Content Include="WebForm1.aspx" />
     <Content Include="web\share_post.aspx" />
     <Content Include="web\tickers.aspx" />
     <Content Include="web_admin_barcode.aspx" />
@@ -305,6 +306,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Data\LoginRoute.cs" />
     <Compile Include="App_Data\CodeClass.cs" />
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForm2.aspx.cs">
       <DependentUpon>WebForm2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -358,13 +366,6 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="web\share_post.aspx.cs">
       <DependentUpon>share_post.aspx</DependentUpon>

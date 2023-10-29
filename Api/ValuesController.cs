@@ -18,7 +18,6 @@ namespace WebApplication2.Api
     public class ValuesController : ApiController
     {
         DataBassClass dbClass = new DataBassClass();
-        CodeClass codeClass = new CodeClass();
 
         // GET api/<controller>/5
         [HttpGet]
@@ -29,9 +28,10 @@ namespace WebApplication2.Api
         }
 
         //POST api/<controller>
-        [HttpPost]
+        [HttpPost, ActionName("post")]
+        //[HttpPost]
         [Route("post")]
-        public IHttpActionResult Post([FromBody] PostData postdata) // 保留
+        public IHttpActionResult Post([FromBody] PostData postdata)
         {
             if (postdata != null)
             {
@@ -60,6 +60,32 @@ namespace WebApplication2.Api
                     //string return_ = "false, userID:" + postdata.userID + ", Password:" + postdata.Password;
                     return Ok("Wrong Data");
                 }
+            }
+            else
+            {
+                return BadRequest("invalid data!");
+            }
+        }
+
+        [HttpPost, ActionName("community")]
+        [Route("post")]
+        public IHttpActionResult Post_Community([FromBody] PostData postdata) // 保留
+        {
+            string sql = "Select id From user Where userName = '" + postdata.userID + "'";
+            DataTable dt = dbClass.SelectTable(sql);
+
+            if (dt.Rows.Count > 0)
+            {
+                Guid verify = Guid.NewGuid();
+                // guid不能加字串 資料欄長度會爆掉(varchar(38))
+
+                string verifi_time = DateTime.Now.AddMinutes(5).ToString("yyyy-MM-dd HH:mm:ss");
+
+                string verifi_sql = @"insert into verify (code, time, user_id) 
+                                      values ('" + verify + "', '" + verifi_time + "', '" + dt.Rows[0][0].ToString() + "')";
+                dbClass.Insert(verifi_sql);
+
+                return Ok(verify);
             }
             else
             {

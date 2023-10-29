@@ -2,9 +2,26 @@
 
 }
 
+td {
+    padding: 0;
+}
+
+.border-hidden {
+    border: solid 0px ;
+}
+
+/* 頭部 社群資訊版layout */
+.header {
+    background-color: #dfe3e6;
+}
+
+#user_inf {
+    padding: 0px 20px;
+}
+
 .user-bg {
     height: 75px;
-    background-color: deepskyblue;
+    background-color: #dadde2;
 }
 
 .user-headshot-div {
@@ -12,7 +29,7 @@
 }
 
 .user-headshot {
-    background-color: white;
+    background-color: #dfe3e6;
     width: 125px;
     height: 125px;
     border-radius: 999em;
@@ -22,7 +39,7 @@
 }
 
 .headshot-img {
-    background-color: cornflowerblue;
+    background-color: rgba(52, 96, 125, 0.8);
     width: 117px;
     height: 117px;
     border-radius: 999em;
@@ -31,24 +48,131 @@
     left: 4px
 }
 
-.btn-edit-pf {
-    border-radius: 15px;
-    border: solid 1px cornflowerblue;
-    margin-top: 10px;
-    color: cornflowerblue;
-}
-
 .introduction {
     margin-bottom: 10px
 }
 
-.text-color {
-    color: gray
+.text-b {
+    color: #554933;
+}
+
+.text-g {
+    color: gray;
+}
+
+/* 貼文主體 */
+
+.post-border-right {
+    background: rgb(218,221,226);
+    background: linear-gradient(90deg, rgba(218,221,226,1) 50%, rgba(223,227,230,1) 50%);
+    min-width: 10px;
+}
+
+.post-border-left {
+    background: rgb(218,221,226);
+    background: linear-gradient(270deg, rgba(218,221,226,1) 50%, rgba(223,227,230,1) 50%);
+    min-width: 10px;
+}
+
+.post-border-top {
+    /*border-top-left-radius: 50px;
+    border-top-right-radius: 50px;*/
+    border-radius: 200px 200px 0px 0px;
+    background-color: #dadde2;
+    height: 6px;
+}
+
+.p-b-left-up {
+    overflow: hidden;
+    border-radius: 100px 0px 0px 0px;
+    background-color: #dadde2;
+    width: 50%;
+    display: list-item;
+    float: right;
+    min-height: 30px;
+}
+
+.p-b-right-up {
+    overflow: hidden;
+    border-radius: 0px 100px 0px 0px;
+    background-color: #dadde2;
+    width: 50%;
+    display: list-item;
+    min-height: 30px;
+}
+
+.post-border-bottom {
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    height: 6px;
+}
+
+.p-b-right-down {
+    overflow: hidden;
+    border-radius: 0px 0px 100px 0px;
+    background-color: #dadde2;
+    width: 50%;
+    display: list-item;
+    min-height: 30px;
+}
+
+.p-b-left-down {
+    overflow: hidden;
+    border-radius: 0px 0px 0px 100px;
+    background-color: #dadde2;
+    width: 50%;
+    display: list-item;
+    float: right;
+    min-height: 30px;
+}
+
+.post-color1 {
+    background-color: #dfe3e6;
+    /*    width: 10px;*/
+    width: auto;
+}
+
+.post-color2 {
+    background-color: #dadde2;
+}
+
+.h-10 {
+    height: 10px;
+}
+
+.h-15 {
+    height: 15px;
+}
+
+m-1{
+    margin: 10px;
+}
+
+.post-head {
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    background-color: #dadde2;
+    padding-top: 15px;
+    height: 20px;
+    /*    display: block;*/
+}
+
+.post-body {
+    background-color: #dadde2;
+    display: block;
+}
+
+.post-bottom {
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    background-color: #dadde2;
+    padding-bottom: 15px;
+    /*    display: block;*/
 }
 
 .svg-icon {
-/*    fill: gray;*/
-/*    height: 1em;*/
+    /*    fill: gray;*/
+    /*    height: 1em;*/
     color: gray;
 }
 
@@ -80,38 +204,14 @@
 
 .fw-bold {
     font-weight: bold;
-}
-
-table {
-    border-collapse: collapse;
-/*    margin-bottom: 10px;*/
-}
-
-.post_link_btn {
-
-}
-
-.post_link_btn td {
-    padding-top: 15px;
+    color: #554933;
 }
 
 .post_like{
     color: #f06836;
 }
 
-.post_like i {
-    color: #f06836;
-}
-
-.post_like1 #label_like {
-    color: #f06836;
-}
-
-.post_head {
-    padding-top: 15px;
-}
-
-.post_bottom {
+.divider {
     border-bottom: 1pt solid lightgray;
     padding-bottom: 20px;
 /*    margin-bottom: 20px;*/
@@ -123,4 +223,24 @@ table {
     width: 30px;
     height: 30px;
     border-radius: 999em;
+}
+/* 新 貼文/元素 class */
+.post-border {
+    /*    background-color: #dfe3e6;*/
+    background-color: rgba(215, 219, 230, 0.7);
+    padding: 5px;
+    border-radius: 23px;
+}
+
+.post-box {
+    /*    background-color: #dadde2;*/
+    background-color: rgba(228, 230, 230, 0.8);
+    border-radius: 25px;
+    padding: 15px;
+}
+
+/*置中元素 for lable..*/
+.flat-center {
+    display: flex;
+    justify-content: center;
 }

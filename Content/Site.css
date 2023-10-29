@@ -2,6 +2,10 @@
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    /*    */
+    /*    background: rgb(139,156,176);*/
+    background: linear-gradient(rgba(139,156,176,1) 0%, rgba(218,219,221,1) 40%, rgba(218,219,221,1) 60%, rgba(190,203,211,1) 100%);
+    background-attachment: fixed;
 }
 
 /* Wrapping element */
@@ -30,23 +34,18 @@ textarea {
     }
 }
 
-/*  */
-/*.login_div {
-    position: absolute;
-    right: 15px;
-    top: 15px;*/
-/*    transform: translate(0%, 0%);*/
-    /*color: gray;
-}*/
+.navbar-light {
+    background-color: rgba(52, 96, 125, 0.8);
+    border: solid 0px;
+}
+
+.navbar-btn {
+    background-color: rgb(52, 96, 125);
+}
 
 .user_inf_label {
     color: red;
 }
-
-/*
-.user_inf_label:hover {
-    color: #ffffff;
-}*/
 
 th {
     text-align: center;

@@ -31,17 +31,13 @@ namespace WebApplication2
 
             if (!Page.IsPostBack)
             {
-
                 Web_initialization();
 
                 listview_posts(5, "reset");
 
-                for (int i = 0; i < listView_community.Items.Count; i++)
-                {
-                    int val = listView_community.Items.Count;
-                }
-
                 linkbutton_stats();
+
+                ScriptManager.RegisterStartupScript(this, GetType(), "RestoreWindowHeight", "storeOriginalWindowHeight();", true);
             }
             else if (Page.IsPostBack)
             {
@@ -49,7 +45,6 @@ namespace WebApplication2
                 //Response.Write("<script>alert('幹');</script>");
                 //Web_initialization();
                 listview_posts(5, "");
-
             }
 
         }
@@ -243,17 +238,6 @@ namespace WebApplication2
 
         }
 
-        #region header連結區 要找時間把這些提出來變物件導向
-        protected void link_task_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("tickers.aspx");
-        }
-
-        protected void link_community_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("community.aspx");
-        }
-
         public string community_category(string category_id)
         {
             switch (category_id)
@@ -271,18 +255,44 @@ namespace WebApplication2
             }
         }
 
-        protected void link_menu_Click(object sender, EventArgs e)
+        #region 社群功能
+        protected void link_tweets_Click(object sender, EventArgs e)
         {
-            Response.Redirect("user_inf.aspx");
+            listView_community.Visible = true;
+            table_star_test.Visible = false;
+
+            li_1.Attributes["class"] = "active";
+            li_2.Attributes.Remove("class");
+            li_3.Attributes.Remove("class");
         }
+
+        protected void link_members_Click(object sender, EventArgs e)
+        {
+
+            li_1.Attributes.Remove("class");
+            li_2.Attributes["class"] = "active";
+            li_3.Attributes.Remove("class");
+        }
+
+        protected void link_star_Click(object sender, EventArgs e)
+        {
+            listView_community.Visible = false;
+            table_star_test.Visible = true;
+
+            li_1.Attributes.Remove("class");
+            li_2.Attributes.Remove("class");
+            li_3.Attributes["class"] = "active";
+
+        }
+
 
         #endregion
 
+        #region 貼文連結功能區(留言.分享.按讚)
         protected void link_comment_Click(object sender, EventArgs e)
         {
             // 將 sender 轉換為 LinkButton 控制項
             LinkButton linkButton = (LinkButton)sender;
-
 
             // 疑似能夠撈到id的控件?
             //Button btn_id = (Button)sender;
@@ -298,8 +308,6 @@ namespace WebApplication2
 
             string comment_data_sql = @"select u.id, u.userName, c.post_id, c.commentContent from comments as c 
                                         inner join user as u on c.user_id = u.id where c.post_id = " + hidden_id.Text;
-            //string comment_data_sql = @"select u.id, u.userName, c.post_id, c.commentContent from comments as c 
-            //                            inner join user as u on c.user_id = u.id where c.post_id = 1";
 
             DataTable comment_data = dbClass.SelectTable(comment_data_sql);
 
@@ -471,6 +479,9 @@ namespace WebApplication2
 
             Label hidden_id = (Label)dataItem.FindControl("hidden_id");
 
+            Session["share_post"] = hidden_id.Text;
+            Response.Redirect("share_post.aspx");
+
             string share_post_sql = @"select u.userName , p.id, p.community_id, p.postPin, p.postContent, p.PostDateTime 
                                       from user as u 
                                       inner join posts as p on u.id = p.user_id where p.id = " + hidden_id.Text;
@@ -546,7 +557,9 @@ namespace WebApplication2
             listView_community.DataSource = dt_result;
             listView_community.DataBind();
         }
+        #endregion
 
+        // listview_updatepanel
         protected void listView_comments_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
             #region 
@@ -570,8 +583,6 @@ namespace WebApplication2
                 }
             }
 
-
-
             AsyncPostBackTrigger trigger = new AsyncPostBackTrigger();
             trigger.ControlID = link_comment.ID;
             trigger.EventName = "Click";
@@ -579,7 +590,22 @@ namespace WebApplication2
             */
             #endregion
 
-            
+            if (e.Item.ItemType == ListViewItemType.DataItem)
+            {
+                // 在ItemDataBound事件中查找控件
+                Label label = (Label)e.Item.FindControl("Label_text");
+                Button button = (Button)e.Item.FindControl("btn");
+
+                if (label != null && button != null)
+                {
+                    // 获取当前数据行的ID
+                    string dataItemID = DataBinder.Eval(e.Item.DataItem, "ID").ToString();
+                    // 做一些操作，比如将ID存储在button的CommandArgument属性中
+                    button.CommandArgument = dataItemID;
+                }
+            }
+
         }
+
     }
 }

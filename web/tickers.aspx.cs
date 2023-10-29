@@ -38,17 +38,17 @@ namespace WebApplication2.web
         public void listview_ticker()
         {
             string sel_user_ticker = @"select t.id, v.name, m.name as merchant_name, v.deadline, 
-                                           CASE 
-                                               WHEN t.exchange_time IS NOT NULL THEN '已兌換'
-                                               ELSE ''
-                                           END AS exchange_status
-                                           from (tickers as t 
-                                               inner join voucher as v
-                                               on t.voucher_id = v.id
-                                               )
-                                           inner join merchant as m
-                                           on v.merchant_id = m.id
-                                           where t.userID =  '" + Session["user_id"].ToString() + "'";
+                                       CASE 
+                                           WHEN t.exchange_time IS NOT NULL THEN '已兌換'
+                                           ELSE ''
+                                       END AS exchange_status
+                                       from (tickers as t 
+                                           inner join voucher as v
+                                           on t.voucher_id = v.id
+                                           )
+                                       inner join merchant as m
+                                       on v.merchant_id = m.id
+                                       where t.userID =  '" + Session["user_id"].ToString() + "'";
 
             DataTable user_ticker_dt = dbClass.SelectTable(sel_user_ticker);
 
@@ -58,17 +58,17 @@ namespace WebApplication2.web
             if (Session["ticker_id"] != null)
             {
                 string sql_check_used_cmd = @"select t.id, v.name, m.name as merchant_name, v.deadline, 
-                                                  CASE 
-                                                      WHEN t.exchange_time IS NOT NULL THEN '已兌換'
-                                                      ELSE ''
-                                                  END AS exchange_status
-                                                  from (tickers as t 
-                                                      inner join voucher as v
-                                                      on t.voucher_id = v.id
-                                                      )
-                                                  inner join merchant as m
-                                                  on v.merchant_id = m.id
-                                                  where t.id =  '" + Session["ticker_id"].ToString() + "'";
+                                              CASE 
+                                                  WHEN t.exchange_time IS NOT NULL THEN '已兌換'
+                                                  ELSE ''
+                                              END AS exchange_status
+                                              from (tickers as t 
+                                                  inner join voucher as v
+                                                  on t.voucher_id = v.id
+                                                  )
+                                              inner join merchant as m
+                                              on v.merchant_id = m.id
+                                              where t.id =  '" + Session["ticker_id"].ToString() + "'";
                 DataTable dt_user_tickers = dbClass.SelectTable(sql_check_used_cmd);
                 listView_user_tickers.DataSource = dt_user_tickers;
                 listView_user_tickers.DataBind();
