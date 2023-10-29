@@ -1,0 +1,126 @@
+﻿body {
+
+}
+
+.user-bg {
+    height: 75px;
+    background-color: deepskyblue;
+}
+
+.user-headshot-div {
+    height: 75px;
+}
+
+.user-headshot {
+    background-color: white;
+    width: 125px;
+    height: 125px;
+    border-radius: 999em;
+    position: absolute;
+    top: 20px;
+    left: 30px;
+}
+
+.headshot-img {
+    background-color: cornflowerblue;
+    width: 117px;
+    height: 117px;
+    border-radius: 999em;
+    position: absolute;
+    top: 4px;
+    left: 4px
+}
+
+.btn-edit-pf {
+    border-radius: 15px;
+    border: solid 1px cornflowerblue;
+    margin-top: 10px;
+    color: cornflowerblue;
+}
+
+.introduction {
+    margin-bottom: 10px
+}
+
+.text-color {
+    color: gray
+}
+
+.svg-icon {
+/*    fill: gray;*/
+/*    height: 1em;*/
+    color: gray;
+}
+
+.blank-text {
+    background-color: lightgray;
+    height: 20px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.blank-photo {
+    background-color: lightgray;
+    height: 150px;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+.post-navbar {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.div-round {
+    background-color: lightgray;
+    width: 50px;
+    height: 50px;
+    border-radius: 999em;
+}
+
+.fw-bold {
+    font-weight: bold;
+}
+
+table {
+    border-collapse: collapse;
+/*    margin-bottom: 10px;*/
+}
+
+.post_link_btn {
+
+}
+
+.post_link_btn td {
+    padding-top: 15px;
+}
+
+.post_like{
+    color: #f06836;
+}
+
+.post_like i {
+    color: #f06836;
+}
+
+.post_like1 #label_like {
+    color: #f06836;
+}
+
+.post_head {
+    padding-top: 15px;
+}
+
+.post_bottom {
+    border-bottom: 1pt solid lightgray;
+    padding-bottom: 20px;
+/*    margin-bottom: 20px;*/
+    height: 10px;
+}
+
+.post-headshot {
+    background-color: lightgray;
+    width: 30px;
+    height: 30px;
+    border-radius: 999em;
+}

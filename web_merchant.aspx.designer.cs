@@ -15,12 +15,21 @@ namespace WebApplication2
     {
 
         /// <summary>
-        /// btn_merchant_barcode 控制項。
+        /// link_scanner 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_merchant_barcode;
+        protected global::System.Web.UI.WebControls.LinkButton link_scanner;
+
+        /// <summary>
+        /// link_merchant_barcode 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton link_merchant_barcode;
     }
 }

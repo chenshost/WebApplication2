@@ -21,19 +21,19 @@ namespace WebApplication2
             //SqlConnection dbcn = new SqlConnection(DBconn);   //mssql
             MySqlConnection dbcn = new MySqlConnection(DBconn); //mysql
             
-            //SelectDBClass selectDBClass = new SelectDBClass();  // 初始化物件導向
+            //dbClassClass dbClassClass = new dbClassClass();  // 初始化物件導向
 
             string sql = "SELECT * FROM spaced.merchant WHERE name = @merchant_id";
 
-            if (Session["user"] == "" || Session["user"] == null)
+            if (Session["user"] == null)
             {
-                Response.Redirect("web_login.aspx");
+                Response.Redirect("web/login.aspx");
                 return;
             }
             string merchant_id = Session["user"].ToString();
             merchant_text.Text = merchant_id;
 
-            //selectDBClass.merchant_select_db(sql, ticker_merchant);
+            //dbClassClass.merchant_select_db(sql, ticker_merchant);
 
             //SqlCommand sql_sel_merchant = new SqlCommand(sql, dbcn);
             MySqlCommand sql_sel_merchant = new MySqlCommand(sql, dbcn);

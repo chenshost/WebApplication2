@@ -1,5 +1,4 @@
-﻿using BarcodeLib;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -21,27 +20,32 @@ using System.Web.Configuration;
 using System.Text.RegularExpressions;
 using MySql.Data.MySqlClient;
 
-
 namespace WebApplication2
 {
     public partial class web_merchant : System.Web.UI.Page
     {
-        //string DBconn = "server=163.17.136.73;port=1433;user id=a123;password=F3PDEGup6310gG;database=spaced;charset=utf8;";
+        static DataBassClass dbClass = new DataBassClass();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (Session["user"] == null)
+            {
+                Server.Transfer("web/login.aspx");
+
+                Session.Remove("user");
+            }
+            string user_id = Session["user"].ToString();
         }
 
         [WebMethod]
         public static string Exchange(string QRcode_id)
         {
-            //string DBconn = @"Data Source=.\SQLEXPRESS;Initial Catalog=mydb;Integrated Security=true";
             string DBconn = "server=163.17.136.73;port=1433;user id=a123;password=F3PDEGup6310gG;database=spaced;charset=utf8;";
             MySqlConnection conn = new MySqlConnection(DBconn);
 
             string sql_sel = "SELECT * FROM tickers WHERE id = @ticker_id";
             MySqlCommand sql_sel_run = new MySqlCommand(sql_sel, conn);
+
 
             conn.Open();
 
@@ -53,6 +57,8 @@ namespace WebApplication2
             MySqlDataAdapter sql_sel_fill = new MySqlDataAdapter(sql_sel_run);
             DataTable sql_sel_dt = new DataTable();
             sql_sel_fill.Fill(sql_sel_dt);
+
+            DataTable scan_dt = dbClass.SelectTable(sql_sel);
 
             conn.Close();
 
@@ -92,13 +98,16 @@ namespace WebApplication2
                 return "";
             }
 
-            // 測試用回傳前端
-            //return "有船值" + QRcode_id;
         }
 
-        protected void btn_merchant_barcode_OnClick(object sender, EventArgs e)
+        protected void link_merchant_barcode_Click(object sender, EventArgs e)
         {
             Response.Redirect("web_merchant_barcode.aspx");
+        }
+
+        protected void link_scanner_Click(object sender, EventArgs e)
+        {
+            //Response.Redirect("web_merchant.aspx");
         }
     }
 }

@@ -361,3 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Api/ValuesController.cs
+/web_testpage.aspx.designer.cs
+/web_testpage.aspx.cs
+/web_testpage.aspx

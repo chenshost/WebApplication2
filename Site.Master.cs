@@ -33,14 +33,14 @@ namespace WebApplication2
 
         protected void btn_login_Click(object sender, EventArgs e)
         {
-            Response.Redirect("web_login.aspx");
+            Response.Redirect("web/login.aspx");
         }
 
         protected void btn_logout_Click(object sender, EventArgs e)
         {
             Session.Remove("user");
             //Session["user"] = null;
-            Response.Redirect("web_login.aspx");
+            Response.Redirect("../web/login.aspx");
         }
     }
 }
